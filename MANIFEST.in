@@ -1,0 +1,5 @@
+include cli/cron-ops-wrap.sh
+include README.md
+include README.zh-CN.md
+include SKILL.md
+include SKILL.en.md
