@@ -26,3 +26,6 @@ cron-ops-wrap = "cron_ops.wrap:main"
 [tool.setuptools]
 package-dir = {"" = "src"}
 packages = ["cron_ops"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
