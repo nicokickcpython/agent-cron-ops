@@ -1,0 +1,9 @@
+# Python build / packaging artifacts
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv/
+
+# Test cache
+.pytest_cache/
