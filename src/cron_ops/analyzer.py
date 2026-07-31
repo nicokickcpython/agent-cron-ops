@@ -3,12 +3,12 @@ import re
 
 ERROR_PATTERNS = [
     (
-        re.compile(r"429|rate.?limit|Too Many Requests|quota", re.I),
+        re.compile(r"429|rate.?limit|\bquota\b", re.I),
         "API 限流 / 配额耗尽",
         "检查对应 API 的用量面板；降低调用频率或升级配额。",
     ),
     (
-        re.compile(r"timed? ?out|timeout|Timeout|ETIMEDOUT", re.I),
+        re.compile(r"timed? ?out|ETIMEDOUT", re.I),
         "网络或 API 超时",
         "目标服务可能不可达（被墙/宕机/变慢）；重试或增加超时。",
     ),
@@ -23,7 +23,7 @@ ERROR_PATTERNS = [
         "应用缺少权限 scope；到开放平台补权限。",
     ),
     (
-        re.compile(r"invalid_api_key|authentication|401|Unauthorized", re.I),
+        re.compile(r"invalid_api_key|authentication|401", re.I),
         "API Key 无效或过期",
         "检查 .env / config 中的 API key；重新生成并更新。",
     ),
@@ -48,7 +48,7 @@ ERROR_PATTERNS = [
         "任务运行环境缺少依赖；安装对应包。",
     ),
     (
-        re.compile(r"memory|OOM|killed", re.I),
+        re.compile(r"memory|OOM|\bkilled\b", re.I),
         "内存不足（OOM）",
         "任务占用内存过大；减少数据量；检查容器限制。",
     ),
