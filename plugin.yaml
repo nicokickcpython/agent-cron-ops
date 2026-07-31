@@ -1,0 +1,8 @@
+name: cron-health-hook
+description: "Cron 任务执行结果钩子：每个定时任务执行完自动检查状态，失败立即告警（无需独立监控任务）"
+version: 1.0.0
+author: Hermes Agent
+license: MIT
+env:
+  - CRON_ALERT_CHAT_ID
+  - CRON_ALERT_COOLDOWN
