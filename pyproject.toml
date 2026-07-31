@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "agent-cron-ops"
+name = "cronwatch"
 version = "1.0.0"
 description = "Universal cron job health checker for any agent (Hermes, Claude Code, OpenCode, Codex) — fail alerts, latency watch, error diagnosis"
 readme = "README.md"
