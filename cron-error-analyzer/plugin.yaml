@@ -1,0 +1,5 @@
+name: cron-error-analyzer
+description: "Cron 失败诊断：识别常见错误模式（限流/超时/权限/Token超限等）并给出修复建议"
+version: 1.0.0
+author: Hermes Agent
+license: MIT
