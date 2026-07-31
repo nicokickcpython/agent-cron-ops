@@ -1,0 +1,9 @@
+name: cron-latency-watch
+description: "Cron 任务耗时监控：任务执行异常缓慢时自动告警（基于历史均值对比，无需独立监控任务）"
+version: 1.0.0
+author: Hermes Agent
+license: MIT
+env:
+  - CRON_LATENCY_FACTOR
+  - CRON_LATENCY_MIN_SEC
+  - CRON_LATENCY_CEILING
