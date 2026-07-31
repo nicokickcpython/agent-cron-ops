@@ -7,8 +7,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/nicokickcpython/cronwatch?style=for-the-badge&logo=github&color=black)](https://github.com/nicokickcpython/cronwatch)
 [![GitHub forks](https://img.shields.io/github/forks/nicokickcpython/cronwatch?style=for-the-badge&logo=github&color=black)](https://github.com/nicokickcpython/cronwatch)
 [![GitHub license](https://img.shields.io/github/license/nicokickcpython/cronwatch?style=for-the-badge&color=blue)](LICENSE)
-[![PyPI version](https://img.shields.io/pypi/v/cron-ops?style=for-the-badge&logo=pypi&logoColor=white&color=3776AB)](https://pypi.org/project/cron-ops/)
-[![Python versions](https://img.shields.io/pypi/pyversions/cron-ops?style=for-the-badge&logo=python&logoColor=white&color=3776AB)](https://pypi.org/project/cron-ops/)
+[![Release](https://img.shields.io/github/v/release/nicokickcpython/cronwatch?style=for-the-badge&logo=github&color=black)](https://github.com/nicokickcpython/cronwatch/releases)
 [![CI](https://img.shields.io/github/actions/workflow/status/nicokickcpython/cronwatch/ci.yml?style=for-the-badge&logo=githubactions&logoColor=white&label=CI&color=green)](https://github.com/nicokickcpython/cronwatch/actions)
 [![Tests](https://img.shields.io/badge/tests-20%20passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white)](tests/)
 [![Last commit](https://img.shields.io/github/last-commit/nicokickcpython/cronwatch?style=for-the-badge&color=orange)](https://github.com/nicokickcpython/cronwatch/commits)
@@ -32,15 +31,17 @@ CronWatch hooks the **post-run choke points** of the job lifecycle, so failures 
 ## 快速开始 / Quick Start
 
 ```bash
-# 方式一：pip 安装（推荐）
-pip install cron-ops
+# 方式一：GitHub Release 安装（推荐）
+pip install https://github.com/nicokickcpython/cronwatch/releases/download/v1.0.0/cron_ops-1.0.0-py3-none-any.whl
 cron-ops-wrap "daily-backup" -- /path/to/backup.sh
 
 # 方式二：Hermes 插件
 hermes plugins install nicokickcpython/cronwatch/cron-health-hook
 
-# 方式三：无依赖 wrapper（零安装）
-/path/to/cron-ops-wrap.sh "daily-backup" -- /path/to/backup.sh
+# 方式三：无依赖 wrapper（零安装，直接下载脚本）
+curl -sL https://raw.githubusercontent.com/nicokickcpython/cronwatch/main/cli/cron-ops-wrap.sh -o cron-ops-wrap.sh
+chmod +x cron-ops-wrap.sh
+./cron-ops-wrap.sh "daily-backup" -- /path/to/backup.sh
 ```
 
 系统 crontab 用法：
@@ -108,7 +109,7 @@ cron-ops check-all ~/.cron-ops/status/
 - [x] Hermes plugins ×3 (health-hook / latency-watch / error-analyzer)
 - [x] Universal CLI (check / check-all / analyze)
 - [x] Universal wrapper
-- [x] pip package
+- [x] GitHub Release distribution (wheel + sdist)
 - [x] 20 automated test cases
 - [ ] cron-dupe-detector
 - [ ] Daily execution digest
