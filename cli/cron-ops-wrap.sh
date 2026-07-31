@@ -47,22 +47,35 @@ END=$(date +%s)
 DURATION=$((END - START))
 
 # Write status record
+if [ $RC -eq 0 ]; then
+    ERROR_VALUE=null
+    SUCCESS_VALUE=true
+else
+    ERROR_VALUE="\"exit code $RC\""
+    SUCCESS_VALUE=false
+fi
 cat > "$STATUS_FILE" <<EOF
 {
   "job_id": "$(echo "$JOB_NAME" | tr ' ' '-')",
   "job_name": "$JOB_NAME",
-  "success": $([ $RC -eq 0 ] && echo true || echo false),
-  "error": $([ $RC -eq 0 ] && echo null || echo "exit code $RC"),
+  "success": $SUCCESS_VALUE,
+  "error": $ERROR_VALUE,
   "delivery_error": null,
   "duration_seconds": $DURATION,
   "fired_at": "$FIRED_AT"
 }
 EOF
 
-# Check + alert on failure (silent on success)
-CRON_OPS_BIN="${CRON_OPS_BIN:-$(dirname "$0")/cron_ops.py}"
+# Check + alert on failure (silent on success).
+# Use the installed `cron-ops` binary when available, otherwise fall back
+# to running the module directly via python3.
+if command -v cron-ops >/dev/null 2>&1; then
+    CRON_OPS_BIN="${CRON_OPS_BIN:-cron-ops}"
+else
+    CRON_OPS_BIN="${CRON_OPS_BIN:-python3 -m cron_ops.cli}"
+fi
 if [ $RC -ne 0 ]; then
-    python3 "$CRON_OPS_BIN" check "$STATUS_FILE"
+    $CRON_OPS_BIN check "$STATUS_FILE"
 fi
 
 exit $RC
