@@ -12,6 +12,7 @@
 [![CI](https://img.shields.io/github/actions/workflow/status/nicokickcpython/cronwatch/ci.yml?style=for-the-badge&logo=githubactions&logoColor=white&label=CI&color=green)](https://github.com/nicokickcpython/cronwatch/actions)
 [![Tests](https://img.shields.io/badge/tests-20%20passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white)](tests/)
 [![Last commit](https://img.shields.io/github/last-commit/nicokickcpython/cronwatch?style=for-the-badge&color=orange)](https://github.com/nicokickcpython/cronwatch/commits)
+[![skills.sh](https://skills.sh/b/nicokickcpython/cronwatch)](https://skills.sh/nicokickcpython/cronwatch)
 
 </div>
 
