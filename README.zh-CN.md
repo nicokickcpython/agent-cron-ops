@@ -7,8 +7,8 @@
 [![GitHub stars](https://img.shields.io/github/stars/nicokickcpython/cronwatch?style=for-the-badge&logo=github&color=black)](https://github.com/nicokickcpython/cronwatch)
 [![GitHub forks](https://img.shields.io/github/forks/nicokickcpython/cronwatch?style=for-the-badge&logo=github&color=black)](https://github.com/nicokickcpython/cronwatch)
 [![GitHub license](https://img.shields.io/github/license/nicokickcpython/cronwatch?style=for-the-badge&color=blue)](LICENSE)
-[![PyPI version](https://img.shields.io/pypi/v/cronwatch?style=for-the-badge&logo=pypi&logoColor=white&color=3776AB)](https://pypi.org/project/cronwatch/)
-[![Python versions](https://img.shields.io/pypi/pyversions/cronwatch?style=for-the-badge&logo=python&logoColor=white&color=3776AB)](https://pypi.org/project/cronwatch/)
+[![PyPI version](https://img.shields.io/pypi/v/cron-ops?style=for-the-badge&logo=pypi&logoColor=white&color=3776AB)](https://pypi.org/project/cron-ops/)
+[![Python versions](https://img.shields.io/pypi/pyversions/cron-ops?style=for-the-badge&logo=python&logoColor=white&color=3776AB)](https://pypi.org/project/cron-ops/)
 [![CI](https://img.shields.io/github/actions/workflow/status/nicokickcpython/cronwatch/ci.yml?style=for-the-badge&logo=githubactions&logoColor=white&label=CI&color=green)](https://github.com/nicokickcpython/cronwatch/actions)
 [![Tests](https://img.shields.io/badge/tests-20%20passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white)](tests/)
 [![Last commit](https://img.shields.io/github/last-commit/nicokickcpython/cronwatch?style=for-the-badge&color=orange)](https://github.com/nicokickcpython/cronwatch/commits)
@@ -33,7 +33,7 @@ CronWatch 挂钩任务生命周期的**收尾点**，失败即时感知。
 
 ```bash
 # 方式一：pip 安装（推荐）
-pip install cronwatch
+pip install cron-ops
 cron-ops-wrap "daily-backup" -- /path/to/backup.sh
 
 # 方式二：Hermes 插件
