@@ -9,6 +9,7 @@ import os
 import subprocess
 import sys
 import time
+from datetime import datetime, timezone
 
 
 def main(argv=None):
@@ -30,11 +31,13 @@ def main(argv=None):
     safe_name = job_name.replace(" ", "-").replace("/", "_")
     status_file = os.path.join(status_dir, f"{safe_name}.json")
 
-    fired_at = time.strftime("%Y-%m-%dT%H:%M:%S")
+    fired_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
     start = time.monotonic()
-    proc = subprocess.run(rest)
+    proc = subprocess.run(rest, stderr=subprocess.PIPE, text=True)
     rc = proc.returncode
     duration = int(time.monotonic() - start)
+
+    stderr_tail = "\n".join((proc.stderr or "").splitlines()[-100:]) or None
 
     status = {
         "job_id": safe_name,
@@ -42,11 +45,16 @@ def main(argv=None):
         "success": rc == 0,
         "error": None if rc == 0 else f"exit code {rc}",
         "delivery_error": None,
+        "stderr_tail": stderr_tail,
         "duration_seconds": duration,
         "fired_at": fired_at,
     }
     with open(status_file, "w", encoding="utf-8") as f:
         json.dump(status, f, ensure_ascii=False, indent=2)
+
+    # Preserve the job's stderr for cron logs while keeping the tail in status.
+    if proc.stderr:
+        sys.stderr.write(proc.stderr)
 
     if rc != 0:
         from .cli import check_one
