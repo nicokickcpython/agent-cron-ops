@@ -1,6 +1,7 @@
 """Alert delivery: Feishu interactive card + generic webhook."""
 import json
 import os
+import urllib.error
 import urllib.request
 
 
@@ -58,6 +59,20 @@ def send_alert(title: str, body: str):
     results = []
     chat_id = os.environ.get("CRON_ALERT_CHAT_ID") or os.environ.get("FEISHU_HOME_CHANNEL")
     if chat_id:
-        results.append(_feishu_send(title, body, chat_id))
-    results.append(_webhook_send(title, body))
+        try:
+            results.append(_feishu_send(title, body, chat_id))
+        except urllib.error.HTTPError as exc:
+            results.append((False, f"feishu http error: {exc.code} {exc.reason}"))
+        except urllib.error.URLError as exc:
+            results.append((False, f"feishu network error: {exc.reason}"))
+        except Exception as exc:
+            results.append((False, f"feishu error: {exc}"))
+    try:
+        results.append(_webhook_send(title, body))
+    except urllib.error.HTTPError as exc:
+        results.append((False, f"webhook http error: {exc.code} {exc.reason}"))
+    except urllib.error.URLError as exc:
+        results.append((False, f"webhook network error: {exc.reason}"))
+    except Exception as exc:
+        results.append((False, f"webhook error: {exc}"))
     return results
