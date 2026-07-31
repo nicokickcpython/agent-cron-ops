@@ -2,6 +2,19 @@
 
 > **English** | [中文](README.zh-CN.md)
 
+<div align="center">
+
+[![GitHub stars](https://img.shields.io/github/stars/nicokickcpython/cronwatch?style=for-the-badge&logo=github&color=black)](https://github.com/nicokickcpython/cronwatch)
+[![GitHub forks](https://img.shields.io/github/forks/nicokickcpython/cronwatch?style=for-the-badge&logo=github&color=black)](https://github.com/nicokickcpython/cronwatch)
+[![GitHub license](https://img.shields.io/github/license/nicokickcpython/cronwatch?style=for-the-badge&color=blue)](LICENSE)
+[![PyPI version](https://img.shields.io/pypi/v/cronwatch?style=for-the-badge&logo=pypi&logoColor=white&color=3776AB)](https://pypi.org/project/cronwatch/)
+[![Python versions](https://img.shields.io/pypi/pyversions/cronwatch?style=for-the-badge&logo=python&logoColor=white&color=3776AB)](https://pypi.org/project/cronwatch/)
+[![CI](https://img.shields.io/github/actions/workflow/status/nicokickcpython/cronwatch/ci.yml?style=for-the-badge&logo=githubactions&logoColor=white&label=CI&color=green)](https://github.com/nicokickcpython/cronwatch/actions)
+[![Tests](https://img.shields.io/badge/tests-20%20passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white)](tests/)
+[![Last commit](https://img.shields.io/github/last-commit/nicokickcpython/cronwatch?style=for-the-badge&color=orange)](https://github.com/nicokickcpython/cronwatch/commits)
+
+</div>
+
 **Cron 任务失败总是悄悄发生？CronWatch 让每个定时任务失败可知、原因可查、异常可警。** 轻量、零配置、安装即用，支持 Hermes / Claude Code / OpenCode / Codex 和任意 CLI 命令——无需额外监控任务，不增加轮询负担。
 
 ```
